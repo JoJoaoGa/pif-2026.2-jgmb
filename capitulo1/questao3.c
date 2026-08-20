@@ -1,21 +1,11 @@
 /* questao3.c 
-Este programa produz a quantidade de resultados aleatórios desejados entre 1 e 20 */
-#include <stdio.h> /* Para printf() e scanf()*/
-#include <stdlib.h>/* Para rand() */
+Este programa demonstra a declaração de 3 variáveis e a utilização delas no printf*/
+#include <stdio.h> // Para printf()
+#include <stdlib.h> // Para system()
 
-int main(){
-    int dados;
-    int i;
-
-    printf("Escolha quantos dados de 20 (d20) deseja jogar:\n");
-    scanf("%d", &dados);
-
-    printf("Gerando %d valores aleatórios", dados);
-
-    for (i = 0; i < dados; i++){
-        /* gerando valores aleatórios entre 1 e 20 */
-    printf("%d ", rand() % 20);
-    
-    return 0;
-    }
-}
+int main(){ // Inicio da função
+    int a=1, b=2, c=3; // Declaração de 3 inteiros e atribuições de valores
+    printf("0s números são: %d, %d, %d\n", a, b, c); // chama a função printf()
+    system("PAUSE"); // chama a função system()
+    return 0; // Retorna 0 para finalizar a função com êxito
+} // Fim da função
