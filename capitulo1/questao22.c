@@ -1,7 +1,6 @@
 #include <stdio.h>
 
-int main() {
-
+int main(){
     printf("\xDC\xDC\xDC\xDB\xDB\xDB\xDB\xDC\xDC\n\
  \xDFO\xDF\xDF\xDF\xDF\xDFO\xDF\n\n");
 
