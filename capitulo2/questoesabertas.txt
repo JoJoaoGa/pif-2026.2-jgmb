@@ -1,0 +1,65 @@
+#Questão 1
+a. O valor será 2
+b. Pois o valor inserido é float, mas o tipo int não aceita números decimais, apenas inteiros. Portanto ele é "arredondado" para armazenar apenas o inteiro.
+c. Ele declara a variável como float ou double, que recebem o número decimal com precisão.
+
+#Questao 2
+a. Falta de padronização da <conio.h> que não faz parte do padrão ANSI/ISO C. Ela é uma biblioteca específica de compiladores legados para MS-DOS e Windows. Os sistemas operacionais como Linux e macOS não possuem essa biblioteca por padrão.
+
+b. Funções equivalentes são stdin e stdout
+
+Funções equivalentes do <stdio.h> são getchar() para leitura e putchar() / printf() para saída de caracteres.
+
+As funções da <stdio.h> são buffered (com buffer de linha). Isso significa que a leitura só é processada pelo programa após o usuário apertar enter, diferente do comportamento unbuffered do getch().
+
+c. questao2-c.c
+
+#Questao 4
+int a = 1, b = 2, c = 3, d = 4;
+
+a += b + c;
+= a = a + (b + c) → a = 1 + (2 + 3) = 6
+a = 6
+
+b *= c = d + 2;
+c = 4 + 2 = 6
+b = b * c -> b = 2 * 6 = 12
+c = 6, b = 12
+
+d -= c -= b -= a;
+b = b - a -> b = 12 - 6 = 6
+c = c - b -> c = 6 - 6 = 0
+d = d - c -> d = 4 - 0 = 4
+a = 6, b = 6, c = 0, d = 4
+
+a += b += c += 7;
+c = c + 7 -> c = 0 + 7 = 7
+b = b + c -> b = 6 + 7 = 13
+a = a + b -> a = 6 + 13 = 19
+a = 19, b = 13, c = 7
+
+d %= a + a + a;
+a + a + a = 19 + 19 + 19 = 57
+d = d % 57 -> d = 4 % 57 = 4
+d = 4
+
+Final: a = 19, b = 13, c = 7, d = 4
+
+#Questao 5
+i = 1, j = 2, k = 3, n = 2, x = 3.3, y = 4.4
+
+a) i < j + 3 (1 Verdadeiro)
+b) 2 * i - 7 <= j - 8 (0 Falso)
+c) -x + y >= 2.0 * y (0 Falso)
+d) x == y (0 Falso)
+e) !(n - j) (1 Verdadeiro)
+f) !n - j (1 Verdadeiro)
+g) i && j && k (1 Verdadeiro)
+h) i || j && k (1 Verdadeiro)
+i) i < j && 2 >= k (0 Falso)
+j) i == 2 || j == 4 || k == 5 (0 Falso)
+
+Questão 6
+a)Trecho A: O valor de n é incrementado primeiro e depois atribuído a x. (n=6, x=6.)
+  Trecho B: O valor atual de m é atribuído a y e, em seguida, m é incrementado. (m=6, y=5.)
+b) Modificar uma variável mais de uma vez entre pontos de sequência na mesma instrução gera Comportamento Indefinido no padrão do C. A ordem de avaliação dos argumentos de uma função como printf() não é garantida pelo padrão, podendo variar entre diferentes compiladores.
