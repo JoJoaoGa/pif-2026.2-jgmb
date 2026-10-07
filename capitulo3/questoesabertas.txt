@@ -1,0 +1,86 @@
+#Questão 01. Diferenças Fundamentais e Tempo de Avaliação de Laços
+
+a. No "while", a condição de teste é avaliada no início, antes da execução do bloco. No "do-while" a condição é avaliada no final, após a execução do bloco.
+O laço "while" pode não ser executado nenhuma vez caso a condição seja falsa logo no primeiro teste. E o "do-while" executa no mínimo 1 vez, pois o bloco de código é processado antes da primeira checagem.
+
+b. O "for" é utilizado quando o número de iterações é previamente conhecido ou fixo, como contagens definidas ou percorrimento de vetores/matrizes.
+O "while" é mais adequado quando não se sabe quantas vezes o laço irá se repetir, e a verificação deve ocorrer antes de iniciar o processo, como na leitura de arquivos até o final ou aguardar uma alteração de estado do sistema.
+O "do-while" é ideal quando o bloco precisa ser executado ao menos uma vez, como para menus interativos e validação de entrada de dados fornecida pelo usuário.
+
+c. É um erro de lógica, pois o ponto e vírgula representa uma instrução nula. Se condição for verdadeira, o programa entrará em um loop eterno, executando repetidamente uma instrução nula. Como o corpo vazio, o valor da variável não será alterado, travando a execução do programa nessa linha.
+
+
+#Questão 02. Escopo e Tempo de Vida de Variáveis de Bloco
+
+a. Um erro de compilação por declaração/sintaxe porque a variável "soma" foi declarada localmente no bloco do `for`.
+
+b. O "int soma = 0;" está dentro do for, a variável "soma" é reinicializada com a cada iteração, ela não vai acumular os valores das iterações.
+
+c.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int i;
+    int soma = 0; // Declarada no escopo da função main para acumular os valores
+
+    for (i = 1; i < 10; i++) {
+        soma += i * i;
+    }
+
+    printf("Soma final = %d\n", soma);
+    system("PAUSE");
+    return 0;
+}
+
+Visibilidade refere-se à região do código em que o nome de uma variável pode ser acessado.
+Escopo do bloco limita a visibilidade de uma variável às instruções contidas entre o par de chaves onde foi declarada.
+Tempo de Vida é o período de execução do programa no qual a memória atribuída à variável permanece alocada.
+
+#Questão 03. Flexibilidade do Laço for e Omissão de Expressões
+
+a. 36, 18, 9, 4, 2, 1
+
+b. O laço lê continuamente os caracteres digitados no teclado até que a tecla "X" seja apertada.
+O "ch + 1" incrementa o código ASCII do caractere de "ch", imprimindo o caractere seguinte do ASCII.
+O parênteses em "(ch = getch())" servr pois o operador "!=" tem maior precedência que o operador de atribuição "=". Sem os parênteses, a expressão atribuiria a `ch` apenas `0` ou `1`.
+
+c. O programa pode interromper a execução do laço através do "break;" dentro de um "if", se a condição for atingida, ele para.
+
+
+#Questão 04. Comandos de Desvio de Fluxo: break vs. continue
+
+a. O "break" interrompe a execução do laço em que está contido, passando o fluxo do código para a primeira instrução após o fechamento do laço.
+
+b. O "continue" encerra antecipadamente apenas a iteração atual, ignorando instruções restantes do laço e saltando para o final do corpo.
+
+c. Em laços aninhados, o "break" interrompe apenas o laço interno em que foi executado. O laço externo continua seu ciclo normalmente.
+
+
+#Questão 05. Operador Vírgula e Múltiplas Variáveis de Controle
+
+a. O laço executará 5 vezes.
+
+b.
+i = 0, j = 10 | soma = 10
+i = 1, j = 9 | soma = 10
+i = 2, j = 8 | soma = 10
+i = 3, j = 7 | soma = 10
+i = 4, j = 6 | soma = 10
+
+c. Código
+
+
+#Questão 06. Laço Sem Corpo e Incremento Pós-fixado
+
+a. O valor final é 6.
+
+b.
+1. "x = 0"; "0 < 5" (Verdadeiro). X passa a ser 1.
+2. "x = 1"; "1 < 5" (Verdadeiro). X passa a ser 2.
+3. "x = 2"; "2 < 5" (Verdadeiro). X passa a ser 3.
+4. "x = 3"; "3 < 5" (Verdadeiro). X passa a ser 4.
+5. "x = 4"; "4 < 5" (Verdadeiro). X passa a ser 5.
+6. "x = 5"; "5 < 5" (Falso). O incremento ocorre após a avaliação do teste, fazendo X passar para 6. E o laço encerra.
+
+c. Código
