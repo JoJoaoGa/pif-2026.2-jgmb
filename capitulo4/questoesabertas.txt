@@ -1,0 +1,36 @@
+#Questão 01. Avaliação de Expressões Condicionais e Atribuição vs. Igualdade — Em relação à
+sintaxe e semântica do comando if na Linguagem C, responda analiticamente:
+
+#Questão 02. Associação do Comando else e Aninhamento de Decisões — Analise o trecho de
+código C abaixo que contém estruturas condicionais aninhadas:
+
+#Questão 03. Operador Condicional Ternário vs. Estrutura if-else — O operador condicional
+ternário (? :) é uma forma concisa de tomada de decisão. Observe a instrução abaixo:
+
+#Questão 04. Seleção Múltipla com switch-case e Efeito Fall-Through — O comando switch é
+utilizado para seleção entre múltiplas alternativas.
+a) Escreva a saída exata gerada no terminal ao executar este programa. Explique por que ocorreu mais
+de uma impressão.
+b) Qual é o papel da instrução break dentro de um bloco switch-case e qual é o nome do fenômeno que
+ocorre quando ela é omitida?
+c) Quais tipos de dados de variáveis ou expressões podem ser utilizados como argumento no comando
+switch (expressão)? É permitido usar float ou double? Justifique.
+
+#Questão 05. Avaliação de Curto-Circuito em Operadores Lógicos — Os operadores lógicos (&& e
+||) realizam a avaliação de curto-circuito (short-circuit evaluation). Considere as variáveis inteiras a = 0,
+b = 5, c = 10 e analise o código.
+a) Qual será a saída exata impressa pelo comando printf? Observe se o incremento ++b foi executado
+ou ignorado.
+b) Explique o conceito de avaliação de curto-circuito para o operador lógico E (&&) e para o operador
+lógico OU (||).
+c) Qual seria o valor final de b e c se a condição fosse alterada para if (a == 0 || ++b > 5)?
+
+#Questão 06. Construções else-if e Análise Lógica de Intervalos — Um programador escreveu o
+código abaixo para classificar a faixa etária de um indivíduo, mas o programa apresenta comportamento
+inconsistente para certas idades.
+
+a) Qual será a saída do programa para idade = 65? Explique por que múltiplas mensagens são exibidas.
+b) Qual é a diferença fundamental de execução entre uma sequência de comandos if independentes e
+uma cadeia else-if?
+c) Reescreva o programa utilizando a estrutura elegante e correta else-if para garantir que apenas uma
+categoria seja impressa.
