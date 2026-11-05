@@ -1,36 +1,85 @@
 #Questão 01. Avaliação de Expressões Condicionais e Atribuição vs. Igualdade — Em relação à
 sintaxe e semântica do comando if na Linguagem C, responda analiticamente:
+a. O '=' é um operador de atibuição, ele atribuirá a x o valor 0. O '==' é um comparador de comparação
+ele apenas irá verificar se X é 0.
+
+b) Como a Linguagem C interpreta valores numéricos inteiros ou reais dentro da condição do comando
+if? O que significa um resultado ser avaliado como 'falso' ou 'verdadeiro'?
+b.
+
+c) Analise a instrução if (x = -5) e determine se o bloco de código associado será executado ou
+ignorado. Justifique sua resposta com base no padrão ANSI C.
+c. Ignorado, pois o '=' irá atribuir -5 ao x.
 
 #Questão 02. Associação do Comando else e Aninhamento de Decisões — Analise o trecho de
 código C abaixo que contém estruturas condicionais aninhadas:
+a. Será exibido 'Opção B'. O primeiro if checa se (X > 10), que é verdadeiro, entrando no segundo if, 
+e verificando se (Y > 10), que é falso, nisso é executado o else em relação ao segundo if.
+
+b. O else será associado ao último if que ele pode enxergar.
+
+c. (código)
 
 #Questão 03. Operador Condicional Ternário vs. Estrutura if-else — O operador condicional
 ternário (? :) é uma forma concisa de tomada de decisão. Observe a instrução abaixo:
 
+a. O operador '?' funciona como um if-else in-line, ele testa se a condição é verdadeira, se sim, 
+atribui 'A' para situação, se não, atribui 'R'. Caso a média seja '6.8', situação será 'R'.
+
+b. 
+media = (nota1 + nota2) / 2.0;
+char situacao;
+if (media >= 7.0){ 
+    situacao = 'A';
+} else {
+    situacao = 'R';
+}
+
+c) O operador ternário pode substituir qualquer estrutura if-else na Linguagem C? Explique as limitações
+do operador ternário em relação a blocos com múltiplos comandos.
+c. Não pode substituir, pois, por exemplo, ele não é compatível com 'return', 'break', 'continue' e 'goto'. 
+Estruturas mais complexas de if-else que utilizam statements não podem ser feitas com o ternário.
+
 #Questão 04. Seleção Múltipla com switch-case e Efeito Fall-Through — O comando switch é
 utilizado para seleção entre múltiplas alternativas.
-a) Escreva a saída exata gerada no terminal ao executar este programa. Explique por que ocorreu mais
-de uma impressão.
-b) Qual é o papel da instrução break dentro de um bloco switch-case e qual é o nome do fenômeno que
-ocorre quando ela é omitida?
+
+a. 'Prata
+    Ouro'
+Isto ocorreu pois o break não foi inserido no case 2.
+
+b. O 'break' encerra o case em execução, não deixando ocorrer o 'Fall-Through', sem ela no case, o switch executaria os 
+cases sucessivamente até encontrar um 'break' ou o switch inteiro terminar.
+
 c) Quais tipos de dados de variáveis ou expressões podem ser utilizados como argumento no comando
 switch (expressão)? É permitido usar float ou double? Justifique.
+c. O switch aceita apenas tipos de dados inteiros e enumerados, 'int', 'char', 'bool', 'enum', etc... 
+Não pode-se utilizar float ou double, pois possuem imprecisões como arredondamento, o que torna 
+comparações não confiáveis. O switch exige valores inteiros para mapear a decisão.
 
 #Questão 05. Avaliação de Curto-Circuito em Operadores Lógicos — Os operadores lógicos (&& e
-||) realizam a avaliação de curto-circuito (short-circuit evaluation). Considere as variáveis inteiras a = 0,
-b = 5, c = 10 e analise o código.
-a) Qual será a saída exata impressa pelo comando printf? Observe se o incremento ++b foi executado
-ou ignorado.
-b) Explique o conceito de avaliação de curto-circuito para o operador lógico E (&&) e para o operador
-lógico OU (||).
-c) Qual seria o valor final de b e c se a condição fosse alterada para if (a == 0 || ++b > 5)?
+||) realizam a avaliação de curto-circuito (short-circuit evaluation). 
+Considere as variáveis inteiras a = 0, b = 5, c = 10 e analise o código.
+a. a = 0, b = 5, c = 10
+O ++b foi ignorado.
+
+b. Para E && ser verdadeiro, ambas as condições precisam ser verdadeiras.
+   Para Ou || ser verdadeiro, pelo menos 1 das condições precisam ser verdadeiras.
+
+c. 'b' seria 5, e 'c' seria 11
 
 #Questão 06. Construções else-if e Análise Lógica de Intervalos — Um programador escreveu o
 código abaixo para classificar a faixa etária de um indivíduo, mas o programa apresenta comportamento
 inconsistente para certas idades.
 
-a) Qual será a saída do programa para idade = 65? Explique por que múltiplas mensagens são exibidas.
-b) Qual é a diferença fundamental de execução entre uma sequência de comandos if independentes e
-uma cadeia else-if?
-c) Reescreva o programa utilizando a estrutura elegante e correta else-if para garantir que apenas uma
-categoria seja impressa.
+a.  Idoso
+    Adulto
+    Jovem
+São exibidas várias mensagens pois os três primeiros ifs são independentes. Ele avalia as condições 
+em sequência, sem levar em consideração se o comando anterior foi executado ou não.
+
+b. Os ifs indepenstes serão avaliadas obrigatoriamente. O programa pode exececutar múltiplas caso 
+mais de uma condição seja satisfeita.
+Com else-if as condições são avaliadas de forma exclusiva. O programa testa as opções em ordem até 
+encontrar a primeira condição verdadeira.
+
+c. (Código)
