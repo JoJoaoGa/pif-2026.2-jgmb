@@ -1,0 +1,145 @@
+#Questão 01. Anatomia de uma Função e o Papel do Protótipo — Observe o programa abaixo:
+
+a. O protótipo é 'float celsius(float);' segunda linha, após o 'include'. Avisando ao compilador 
+que essa função existe, será encontrada mais à frente no código.
+
+A chamada é 'c = celsius(f);' dentro da main. Onde a função é chamada e executada.
+
+A definição só é feita depois da main, onde completamente estruturada. 
+
+b. O protótipo serve para avisar ao compilador que ele pode continuar lendo o código, 
+pois aquela função será definida eventualmente. Sem isso ele acusaria um erro, pois 
+lendo de cima pra baixo, a função não existiria ainda quando alcançasse a chamada.
+
+c. É do tipo float.
+O tipo da função é definido pelo retorno pois o código resolve a função buscando apenas
+a saída para continuar seus processos. Os parâmetros de entrada servem apenas para 
+resolução da saída.
+
+#Questão 02. O Comando return e suas Limitações — Analise os trechos a seguir:
+
+a. Uma função pode devolver um único valor pelo return.
+Em 'calcular()', a ideia era devolver a soma e a média ao mesmo tempo, como se o return 
+aceitasse devolver dois valores separados por vírgula. Ali a vírgula serve como o operador
+avaliando as duas expressões, descartando a primeira e ficando com o resultado da última.
+
+b. Em 'imprime_mensagem()', o return serve para encerrar a função na hora e voltar para quem chamou. 
+Se erro for negativo, ela imprime “Erro invalido” e sai, sem chegar no printf do “Codigo processado”. 
+Funciona como uma saída antecipada. Como a função é void, o return vem sem valor nenhum, como também
+não é obrigatório nesse tipo de função, ele faz sentido apenas se quiser finaliza-lá antecipadamente.
+
+c.
+int calcular(int a, int b, int c) {
+    int soma = a + b + c;
+    int media = soma / 3;
+    return media;
+}
+
+int calcular_soma(int a, int b, int c) {
+    int soma = a + b + c;
+    return soma;
+}
+O comando return só consegue devolver um único valor por vez para o ponto onde a função foi chamada, 
+e encerra a execução da função imediatamente após retornar isso. Quando usamos return, cada função 
+fica restrita a entregar uma única resposta, exigindo funções separadas para obter resultados diferentes.
+
+#Questão 03. Funções void, Parâmetros e Assinaturas — Considere os três protótipos
+abaixo:
+
+a. 'void exibe_mensagem(char* msg);' recebe um parâmetro de entrada, msg, do tipo char, e não retorna nada, pois é void. 
+'int obter_codigo(void);' não recebe parâmetros e retorna um valor do tipo int.
+'void limpar_tela(void);' não recebe parâmetros e não retorna nada.
+
+b. A diferença é que a função com retorno produz um valor que pode ser usado, guardar numa variável, 
+usar numa conta, num if ou passar para outra função. Já o void só executa uma ação específica e não 
+devolve nada para ser aproveitado depois.
+
+Uma função com retorno é adequada quando precisar de um resultado. Como calcular a média de um aluno, 
+e depois decidir se ele foi aprovado. E um procedimento é adequado quando algo for executado, 
+sem resultado para devolver, como exibir o menu de um programa, só imprimindo as opções na tela, 
+e não tem nada para retornar.
+
+c. Não é válida, pois ela é do tipo void, então não existe nada para ser atribuído a x.
+
+#Questão 04. Recursão: Caso Base, Passo Recursivo e Pilha de Execução — Analise a
+função recursiva:
+
+a. O passo recursivo é o n * fatorial(n - 1). O caso base é o 'n == 0', o ponto de parada da recursão, 
+quando n chega a zero, a função retorna 1 direto, sem chamar a si mesma de novo. Se o caso base fosse 
+removido, ela iria se chamar indefinidamente.
+
+b. Empilhamento.
+fatorial(4) -> 4 * fatorial(3)
+fatorial(3) -> 3 * fatorial(2)
+fatorial(2) -> 2 * fatorial(1)
+fatorial(1) -> 1 * fatorial(0)
+fatorial(0) -> retorna 1
+
+Desempilhamento.
+fatorial(0) -> retorna 1 
+fatorial(1) = 1 * 1 = 1 → retorna 1 
+fatorial(2) = 2 * 1 = 2 → retorna 2 
+fatorial(3) = 3 * 2 = 6 → retorna 6 
+fatorial(4) = 4 * 6 = 24 → retorna 24
+
+Resultado. fatorial(4) = 24.
+
+c. Toda vez que uma função é chamada, o programa reserva um espaço na pilha de execução, stack frame. 
+Nesse espaço ficam o parâmetro n, as variáveis locais e o endereço de retorno, que indica para onde voltar 
+quando a função terminar. Na recursão, cada chamada cria um frame novo, empilhado em cima do anterior. 
+Por isso cada chamada tem o seu próprio n. Quando o caso base é atingido, as chamadas começam a terminar 
+na ordem inversa. A última que entrou é a primeira que sai, e cada frame é liberado assim que a sua função retorna.
+Sem caso base, as chamadas nunca terminam, e frames continuam sendo empilhados sem que nenhum seja liberado. 
+Uma hora a memória reservada para a pilha acaba, e acontece o stack overflow.
+
+#Questão 05. Diretiva #define, Constantes e Macros com Argumentos — Analise o código:
+
+a. 
+SQR(2+3): 25
+DOBRO(2+3): 8
+
+As macros em C não avaliam expressões antes de executá-las; o pré-processador faz apenas uma 
+substituição literal antes da compilação. 
+Em SQR(2+3), a expansão gera ((2+3)*(2+3)). Os parênteses internos ao redor de x forçam 
+a soma 2+3 a ser resolvida antes da multiplicação. 
+Em DOBRO(2+3), a falta de parênteses em x faz o código ser substituído diretamente por 2+3*2. 
+A multiplicação ocorre antes da soma (2 + 6 = 8), produzindo um resultado diferente do esperado (10). 
+Os parênteses externos também são necessários para evitar que operadores vizinhos alterem o resultado, 
+caso a macro seja usada em expressões maiores.
+
+b. O #define é uma diretiva. Como o pré-processador copia literalmente tudo o que vem após o identificador, 
+um ponto e vírgula no final seria inserido no meio das expressões, gerando erro de sintaxe.
+A convenção das letras maiúsculas serve para diferenciar visualmente macros e constantes de variáveis e funções comuns. 
+Como macros fazem substituição de texto, as letras maiúsculas sinalizam que o trecho exige cuidado extra.
+
+c. Está incorreto pois há um espaço entre 'PRN' e o '(n)'. Para o pré-processador, PRN será interpretado como uma macro 
+sem parâmetros que deve ser substituída pelo texto literal '(n) printf("%d", n)', o que quebra a compilação ao tentar usá-lá.
+
+Versão corrigida: #define PRN(n) printf("%d", (n))
+
+Macros são expandidas diretamente no código antes da compilação e não possuem verificação de tipos, 
+aceitando qualquer dado compatível com a operação. Em contrapartida, podem causar efeitos colaterais 
+se um argumento com incremento for repetido na definição. 
+Já uma função comum exige tipos definidos nos parâmetros, avalia cada argumento uma única vez antes 
+de entrar no bloco e é chamada em tempo de execução.
+
+#Questão 06. Diretivas #include, #undef e Compilação Condicional — Considere o trecho:
+
+a. Em '#include <stdio.h>', estamos chamando uma biblioteca nativa do compilador C.
+Em '#include "areas.h"', estamos chamando um arquivo no caminho de pastas da máquina local.
+usamos <> para as bibliotecas padrão da linguagem, e "" para os cabeçalhos que nós mesmos criamos no projeto.
+
+b. O #undef SOMA apaga a definição da macro SOMA. Da linha do #undef para baixo, o pré-processador esquece que essa macro existe. 
+Se o código usar 'SOMA(2, 3)' depois disso, não vai haver substituição nenhuma, e o compilador vai tratar SOMA como uma função 
+não declarada, o que dá erro.
+#undef SOMA(x,y) está incorreta pois o #undef recebe só o nome da macro. Os parâmetros (x,y) não fazem parte do nome, 
+só aparecem na hora de definir a macro com #define. Não precisa repetir a lista de parâmetros para desfazer a definição.
+
+c. Se DEBUG não foi definido, a mensagem impressa é Modo normal. Essa decisão é tomada no pré-processamento e não durante a execução. 
+O pré-processador verifica se DEBUG existe, como não existe, ele descarta a linha do 'printf("Modo de depuracao\n");' 
+e manda para o compilador só o 'printf("Modo normal\n");'. Para o compilador, é como se a outra linha nunca tivesse sido escrita.
+
+As diretivas não aparecem no executável porque elas não são instruções. São ordens para o pré-processador, que as executa e depois 
+remove do código, o #include vira o conteúdo do arquivo, #define vira a substituição de texto, e #ifdef vira só o trecho escolhido. 
+O compilador recebe um código “limpo”, sem nenhuma diretiva, e é desse código que sai o executável. 
+Por isso, diferente de um if, o trecho não escolhido não ocupa espaço nem é testado durante a execução, ele não existe no programa final.
